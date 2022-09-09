@@ -1,18 +1,26 @@
 import './style.css'
+import { FaStar, FaRegStar } from 'react-icons/fa'
 import img from '../components/images/images.png'
 
 export const CardItem = () => {
   return (
     <div className="card-item">
       <>
-      <div className="card-item-header">
-        <img src={img} alt="" />
-      </div>
-     </>
+        <div className="card-item-header">
+          <img src={img} alt="" />
+        </div>
+      </>
       <div className="card-item-body">
         <div className="body-top">
           <h2 className="top-header">Title</h2>
-          <span>* * * * * 4.5 (413)</span>
+          <div className="card-star">
+            <FaStar className="star"></FaStar>
+            <FaStar className="star"></FaStar>
+            <FaStar className="star"></FaStar>
+            <FaStar className="star"></FaStar>
+            <FaRegStar className="star"></FaRegStar>
+            <p>4.5 (413)</p>
+          </div>
           <h5 className="top-text">Secondary text</h5>
           <p className="top-description">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
@@ -28,7 +36,9 @@ export const CardItem = () => {
             <button className="bottom-btn">Item 3</button>
             <button className="bottom-btn">Item 4</button>
           </div>
-          <a href="$" className="bottom-link">ACTION 1</a>
+          <a href="$" className="bottom-link">
+            ACTION 1
+          </a>
         </div>
       </div>
     </div>

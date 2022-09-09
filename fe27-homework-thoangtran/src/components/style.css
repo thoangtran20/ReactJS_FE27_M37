@@ -35,6 +35,22 @@
   margin-top: 10px;
 }
 
+.card-star {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+}
+.card-star p{
+  margin: 0;
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+.star{
+  color: rgb(247, 247, 16);
+}
+
 .body-top {
   position: relative;
 }
