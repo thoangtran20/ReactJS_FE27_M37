@@ -1,0 +1,39 @@
+/** @format */
+
+* {
+	box-sizing: border-box;
+}
+
+.todo-item {
+	border: 2px solid rgb(62, 50, 224);
+	border-radius: 20px;
+	width: calc(25% - 100px);
+	padding: 15px;
+	margin-bottom: 15px;
+	margin-left: 10px;
+	text-align: left;
+}
+
+.todo-item-creator {
+	margin-top: 0;
+}
+
+.todo-item-title {
+	font-weight: 700;
+	margin-top: 0;
+}
+
+.todo-item-status {
+	color: rgb(47, 255, 109);
+	margin-top: 0;
+	font-weight: 700;
+}
+
+span {
+	font-weight: 700;
+}
+
+.todo-item-divider {
+	border: 1px solid red;
+	width: 100%;
+}

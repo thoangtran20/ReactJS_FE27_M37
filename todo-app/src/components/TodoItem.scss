@@ -1,0 +1,43 @@
+.todo-item {
+  width: 250px;
+  border: 2px solid #3867d6;
+  margin: 20px auto;
+  border-radius: 6px;
+  text-align: left;
+  // display: flex;
+  // justify-content: start;
+  // align-items: flex-start;
+  // flex-direction: column;
+  padding: 16px;
+
+  .todo-item-title {
+    color: red;
+    font-weight: 700;
+    margin-top: 0;
+  }
+
+  .todo-item-creator {
+    margin-top: 0;
+  }
+
+  .todo-item-status {
+    color: rgb(47, 255, 109);
+    margin-top: 0;
+    font-weight: 700;
+  }
+
+  .todo-item-divider {
+    border: 1px solid red;
+    width: 100%;
+  } 
+  
+  .todo-item-description {
+    margin-top: 10px;
+  }
+
+  span {
+    margin-top: 0;
+    font-weight: 700;
+  }
+  
+}

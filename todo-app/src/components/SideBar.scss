@@ -1,0 +1,21 @@
+.side-bar {
+  width: 200px;
+  height: auto;
+  background-color: #FF9551;
+
+  .side-bar_item {
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid #fff;
+  }
+  
+  .item-text {
+    font-size: 24px;
+    color: #fff;
+    font-weight: 400;
+  }
+
+}
