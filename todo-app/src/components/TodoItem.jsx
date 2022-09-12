@@ -1,21 +1,70 @@
 // This is also component
+import { Component } from 'react';
 import './TodoItem.scss'
 
-export const TodoItem = () => {
+// Funtional Component
+export const TodoItemFunction = (props) => {
+  console.log(props);
   return (
     <div className="todo-item">
-      <p className="todo-item-title">Title: Task 1</p>
-      <p className="todo-item-creator">Creator: Thoang</p>
-      <p className="todo-item-status">Status: New</p>
+      <p className="todo-item-title">Title: {props.title}</p>
+      <p className="todo-item-creator">Creator: {props.creator}</p>
+      <p className="todo-item-status">Status: {props.status}</p>
       <hr className="todo-item-divider" />
       <p className="todo-item-description">
         <span>Description: </span>
         <br />
         <p>
-          This is a task, This is a Task, This is a Task, This is a Task, This
-          is a ...
+          {props.description}
         </p>
       </p>
     </div>
   )
 }
+
+export class TodoItemClass extends Component {
+  render() {
+    return (
+      <div className="todo-item">
+      <p className="todo-item-title">Title: {this.props.title}</p>
+      <p className="todo-item-creator">Creator: {this.props.creator}</p>
+      <p className="todo-item-status">Status: {this.props.status}</p>
+      <hr className="todo-item-divider" />
+      <p className="todo-item-description">
+        <span>Description: </span>
+        <br />
+        <p>
+          {this.props.description}
+        </p>
+      </p>
+    </div>
+    )
+  }
+}
+
+// export default TodoItem;
+
+// class Person {
+//   // Thuoc tinh: ten, tuoi, ...
+//   constructor(name, age) {
+//     this.name = name;
+//     this.age = age;
+//   }
+
+//   run() {
+//     console.log(`${this.name} dang chay`)
+//   }
+
+//   sleep() {
+//     console.log(`${this.name} dang ngu`)
+//   }
+
+//   hello() {
+//     console.log(`${this.name} chao ban`);
+//   }
+
+// }
+// const thoang = new Person('Thoang', 22);
+// thoang.hello();
+// thoang.run();
+// thoang.sleep();

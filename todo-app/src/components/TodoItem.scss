@@ -1,14 +1,14 @@
 .todo-item {
   width: 250px;
   border: 2px solid #3867d6;
-  margin: 20px auto;
   border-radius: 6px;
   text-align: left;
   // display: flex;
   // justify-content: start;
   // align-items: flex-start;
   // flex-direction: column;
-  padding: 16px;
+  padding: 5px;
+  padding-bottom: 0;
 
   .todo-item-title {
     color: red;
@@ -38,6 +38,10 @@
   span {
     margin-top: 0;
     font-weight: 700;
+  }
+
+  .todo-item-description p {
+    margin-top: 0;
   }
   
 }
