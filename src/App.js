@@ -1,10 +1,12 @@
 import './App.css';
-import { CardItem } from './components/CardItem';
+import ComplexComponent from './complex-component/ComplexComponent';
+// import { CardItem } from './components/CardItem';
 
 function App() {
   return (
     <div className="App">
-      <CardItem></CardItem>
+      {/* <CardItem></CardItem> */}
+      <ComplexComponent />
     </div>
   );
 }

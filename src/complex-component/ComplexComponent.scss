@@ -1,0 +1,11 @@
+.complex-component {
+  box-sizing: border-box;
+  border: 1px solid none;
+  margin: 10px 50px;
+  padding-bottom: 150px;
+  background-color: #fff;
+  
+  .content-layout {
+    display: flex;
+  }
+}
