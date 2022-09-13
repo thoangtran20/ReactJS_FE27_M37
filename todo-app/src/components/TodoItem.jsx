@@ -3,6 +3,8 @@ import { Component } from 'react';
 import './TodoItem.scss'
 
 // Funtional Component
+// Props is 'object' chứa các thuộc tính của component
+
 export const TodoItemFunction = (props) => {
   console.log(props);
   return (
