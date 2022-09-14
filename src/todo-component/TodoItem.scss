@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bebas+Neue&family=Fjalla+One&family=Montserrat:wght@100;200;300;400;500;600;700&family=Overpass:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600&family=Sora:wght@100;200;300;400;500&display=swap');.todo-item {
+  box-sizing: border-box;
+  display: flex;
+  padding: 20px 20px;
+  text-align: left;
+
+  .item-id {
+    width: 100px;
+    margin-right: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 30px;
+  }
+
+  .item-img {
+    width: 1000px ;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .image-item {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .item-detail {
+    width: 100%;
+    padding: 5px 30px;
+
+    .item-title {
+      margin-top: -10px;
+      font-size: 34px;
+      font-family: 'Fjalla One', sans-serif;
+      color: #34495e;
+      font-weight: 800;
+      text-transform: capitalize;
+    }
+
+    .item-creator {
+      color: #bdc3c7;
+      margin-top: -30px;
+      font-family: 'Poppins', sans-serif;
+      padding: 10px 0 20px 0;
+      font-weight: 700;
+
+      .item-creator-name {
+        color: #f1c40f;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+      }
+    }
+
+    .item-description {
+      color: #94a1a2;
+      padding-right: 200px;
+      font-family: 'Sora', sans-serif;
+    }
+  }
+}
