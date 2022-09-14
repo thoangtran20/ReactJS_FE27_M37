@@ -1,12 +1,14 @@
 import './App.css';
-import ComplexComponent from './complex-component/ComplexComponent';
+// import ComplexComponent from './complex-component/ComplexComponent';
+import TodoItemList from './todo-component/TodoItemList';
 // import { CardItem } from './components/CardItem';
 
 function App() {
   return (
     <div className="App">
-      {/* <CardItem></CardItem> */}
-      <ComplexComponent />
+      {/* <CardItem /> */}
+      {/* <ComplexComponent /> */}
+      <TodoItemList />
     </div>
   );
 }
