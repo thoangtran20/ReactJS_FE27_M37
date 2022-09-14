@@ -1,12 +1,12 @@
 // This is also component
-import { Component } from 'react';
+import { Component } from 'react'
 import './TodoItem.scss'
 
 // Funtional Component
 // Props is 'object' chứa các thuộc tính của component
 
 export const TodoItemFunction = (props) => {
-  console.log(props);
+  console.log(props)
   return (
     <div className="todo-item">
       <p className="todo-item-title">Title: {props.title}</p>
@@ -16,9 +16,7 @@ export const TodoItemFunction = (props) => {
       <p className="todo-item-description">
         <span>Description: </span>
         <br />
-        <p>
-          {props.description}
-        </p>
+        <p>{props.description}</p>
       </p>
     </div>
   )
@@ -28,18 +26,16 @@ export class TodoItemClass extends Component {
   render() {
     return (
       <div className="todo-item">
-      <p className="todo-item-title">Title: {this.props.title}</p>
-      <p className="todo-item-creator">Creator: {this.props.creator}</p>
-      <p className="todo-item-status">Status: {this.props.status}</p>
-      <hr className="todo-item-divider" />
-      <p className="todo-item-description">
-        <span>Description: </span>
-        <br />
-        <p>
-          {this.props.description}
+        <p className="todo-item-title">Title: {this.props.title}</p>
+        <p className="todo-item-creator">Creator: {this.props.creator}</p>
+        <p className="todo-item-status">Status: {this.props.status}</p>
+        <hr className="todo-item-divider" />
+        <p className="todo-item-description">
+          <span>Description: </span>
+          <br />
+          <p>{this.props.description}</p>
         </p>
-      </p>
-    </div>
+      </div>
     )
   }
 }

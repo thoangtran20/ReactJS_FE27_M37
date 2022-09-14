@@ -1,16 +1,22 @@
-import Footer from '../components/Footer'
-import Header from '../components/Header'
-import MainContent from '../components/MainContent'
-import SideBar from '../components/SideBar'
+import { useState } from 'react'
+import Footer from '../components/footer/Footer'
+import Header from '../components/header/Header'
+import MainContent from '../components/main-content/MainContent'
+import SideBar from '../components/side-bar/SideBar'
+import { FORM_PAGE, LIST_PAGE } from '../const'
 import './MainLayout.scss'
 
+
 function MainLayout() {
+  const [currentPage, setCurrentPage] = useState(LIST_PAGE)
+
   return (
     <div className="main-layout">
-      <Header />
+      {/* Callback */}
+      <Header onOpenFormPage={setCurrentPage} page={currentPage}/>
       <div className="content-layout">
         <SideBar />
-        <MainContent />
+        <MainContent page={currentPage} />
       </div>
       <Footer />
     </div>

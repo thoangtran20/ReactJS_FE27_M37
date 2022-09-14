@@ -1,0 +1,29 @@
+.StateDemo {
+  height: 800px;
+  width: 200px;
+
+  .light {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    opacity: 0.3;
+
+    &.active {
+      opacity: 1;
+    }
+
+    &.red-light {
+      background-color: red;
+    }
+
+    &.orange-light {
+      background-color: orange;
+    }
+
+    &.green-light {
+      background-color: green;
+    }
+  }
+  
+
+}

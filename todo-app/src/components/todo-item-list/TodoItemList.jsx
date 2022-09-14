@@ -1,5 +1,5 @@
 import './TodoItemList.scss'
-import { TodoItemClass } from './TodoItem'
+import { TodoItemClass } from '../todo-item/TodoItem'
 
 export const Pagination = () => {}
 
