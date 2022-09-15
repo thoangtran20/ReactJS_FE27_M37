@@ -1,6 +1,7 @@
 import './App.css';
+import StateAmount from './state-exercise/StateAmount';
 // import ComplexComponent from './complex-component/ComplexComponent';
-import TodoItemList from './todo-component/TodoItemList';
+// import TodoItemList from './todo-component/TodoItemList';
 // import { CardItem } from './components/CardItem';
 
 function App() {
@@ -8,7 +9,8 @@ function App() {
     <div className="App">
       {/* <CardItem /> */}
       {/* <ComplexComponent /> */}
-      <TodoItemList />
+      {/* <TodoItemList /> */}
+      <StateAmount />
     </div>
   );
 }

@@ -2,7 +2,7 @@ import './TodoItemList.scss'
 import safari_food from './Images/food.jpg'
 import travel_india from './Images/travel.jpg'
 import perfect_egg from './Images/perfect_egg.png'
-import babecue   from './Images/barbecue-poster.jpg'
+import babecue from './Images/barbecue-poster.jpg'
 import TodoItem from './TodoItem'
 
 const TodoList = [
