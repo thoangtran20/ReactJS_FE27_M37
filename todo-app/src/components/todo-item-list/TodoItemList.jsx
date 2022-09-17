@@ -3,85 +3,86 @@ import { TodoItemClass } from '../todo-item/TodoItem'
 
 export const Pagination = () => {}
 
-const TodoList = [
-  {
-    title: 'task 1',
-    creator: 'Thoang',
-    status: 'New',
-    description: 'This is task 1',
-  },
-  {
-    title: 'task 2',
-    creator: 'Thoang',
-    status: 'Doing',
-    description: 'This is task 2',
-  },
-  {
-    title: 'task 3',
-    creator: 'Thoang',
-    status: 'Done',
-    description: 'This is task 3',
-  },
-  {
-    title: 'task 3',
-    creator: 'Thoang',
-    status: 'Done',
-    description: 'This is task 3',
-  },
-  {
-    title: 'task 3',
-    creator: 'Thoang',
-    status: 'Done',
-    description: 'This is task 3',
-  },
-  {
-    title: 'task 3',
-    creator: 'Thoang',
-    status: 'Done',
-    description: 'This is task 3',
-  },
-  {
-    title: 'task 3',
-    creator: 'Thoang',
-    status: 'Done',
-    description: 'This is task 3',
-  },
-  {
-    title: 'task 3',
-    creator: 'Thoang',
-    status: 'Done',
-    description: 'This is task 3',
-  },
-  {
-    title: 'task 3',
-    creator: 'Thoang',
-    status: 'Done',
-    description: 'This is task 3',
-  },
-  {
-    title: 'task 3',
-    creator: 'Thoang',
-    status: 'Done',
-    description: 'This is task 3',
-  },
-  {
-    title: 'task 3',
-    creator: 'Thoang',
-    status: 'Done',
-    description: 'This is task 3',
-  },
-  {
-    title: 'task 3',
-    creator: 'Thoang',
-    status: 'Done',
-    description: 'This is task 3',
-  },
-]
+// const TodoList = [
+//   {
+//     title: 'task 1',
+//     creator: 'Thoang',
+//     status: 'New',
+//     description: 'This is task 1',
+//   },
+//   {
+//     title: 'task 2',
+//     creator: 'Thoang',
+//     status: 'Doing',
+//     description: 'This is task 2',
+//   },
+//   {
+//     title: 'task 3',
+//     creator: 'Thoang',
+//     status: 'Done',
+//     description: 'This is task 3',
+//   },
+//   {
+//     title: 'task 3',
+//     creator: 'Thoang',
+//     status: 'Done',
+//     description: 'This is task 3',
+//   },
+//   {
+//     title: 'task 3',
+//     creator: 'Thoang',
+//     status: 'Done',
+//     description: 'This is task 3',
+//   },
+//   {
+//     title: 'task 3',
+//     creator: 'Thoang',
+//     status: 'Done',
+//     description: 'This is task 3',
+//   },
+//   {
+//     title: 'task 3',
+//     creator: 'Thoang',
+//     status: 'Done',
+//     description: 'This is task 3',
+//   },
+//   {
+//     title: 'task 3',
+//     creator: 'Thoang',
+//     status: 'Done',
+//     description: 'This is task 3',
+//   },
+//   {
+//     title: 'task 3',
+//     creator: 'Thoang',
+//     status: 'Done',
+//     description: 'This is task 3',
+//   },
+//   {
+//     title: 'task 3',
+//     creator: 'Thoang',
+//     status: 'Done',
+//     description: 'This is task 3',
+//   },
+//   {
+//     title: 'task 3',
+//     creator: 'Thoang',
+//     status: 'Done',
+//     description: 'This is task 3',
+//   },
+//   {
+//     title: 'task 3',
+//     creator: 'Thoang',
+//     status: 'Done',
+//     description: 'This is task 3',
+//   },
+// ]
 
-const TodoItemList = () => {
+const TodoItemList = (props) => {
+  const { data } = props;
   return (
     <div className="todo-item-list">
-      {TodoList.map((item, index) => {
+      {data.map((item, index) => {
         return (
           <TodoItemClass
             key={index}
