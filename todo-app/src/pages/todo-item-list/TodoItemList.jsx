@@ -1,5 +1,5 @@
 import './TodoItemList.scss'
-import { TodoItemClass } from '../todo-item/TodoItem'
+import { TodoItemFunction } from '../../components/todo-item/TodoItem';
 
 export const Pagination = () => {}
 
@@ -84,7 +84,7 @@ const TodoItemList = (props) => {
     <div className="todo-item-list">
       {data.map((item, index) => {
         return (
-          <TodoItemClass
+          <TodoItemFunction
             key={index}
             title={item.title}
             creator={item.creator}

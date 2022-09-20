@@ -1,13 +1,17 @@
 // import { FORM_PAGE } from '../../const'
+import { useNavigate } from 'react-router-dom'
+import { ROUTE } from '../../const';
 import { getNextPage } from '../../utils'
 import './Header.scss'
 function Header(props) {
+  const navigate = useNavigate();
   const { onOpenFormPage, page } = props
 
   const onAddButtonClick = () => {
-    const nextPage = getNextPage(page)
-    onOpenFormPage(nextPage)
-    console.log(page);
+    navigate(ROUTE.addNew);
+    // const nextPage = getNextPage(page)
+    // onOpenFormPage(nextPage)
+    // console.log(page);
   }
 
   return (

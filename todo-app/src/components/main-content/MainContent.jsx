@@ -1,6 +1,6 @@
-import TodoItemList from '../todo-item-list/TodoItemList'
+import TodoItemList from '../../pages/todo-item-list/TodoItemList'
 import './MainContent.scss'
-import AddNewForm from '../add-new-form/AddNewForm'
+import AddNewForm from '../../pages/add-new-form/AddNewForm'
 import { LIST_PAGE } from '../../const'
 import { useState } from 'react'
 
