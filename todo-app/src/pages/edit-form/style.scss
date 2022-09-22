@@ -1,0 +1,56 @@
+.container {
+  margin: 0 auto;
+
+  .EditForm {
+    margin: 40px auto;
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+
+    .form-row {
+      width: 100%;
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+
+      .form-label {
+        font-weight: 700;
+        font-size: 16px;
+        margin-right: 10px;
+      }
+
+      .form-input {
+        width: 330px;
+        border: none;
+        border-bottom: 1px solid #181818;
+        font-size: 16px;
+        padding-left: 10px;
+      }
+
+      .form-radio {
+        font-size: 16px;
+        padding-left: 10px;
+        margin-left: 60px;
+      }
+
+      .form-input::placeholder {
+        color: #bbb;
+      }
+
+      .form-input:focus-visible {
+        outline: none;
+        border-bottom: 2px solid #181818;
+      }
+    }
+  }
+
+  .btn-save {
+    width: 120px;
+    height: auto;
+    font-size: 24px;
+    color: #fff;
+    background-color: #A460ED;
+    border-radius: 10px;
+    height: 50px;
+  }
+}

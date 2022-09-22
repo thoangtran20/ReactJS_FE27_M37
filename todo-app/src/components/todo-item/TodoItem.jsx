@@ -1,14 +1,21 @@
 // This is also component
 import { Component } from 'react'
+import { useNavigate } from 'react-router'
+import { ROUTE } from '../../const';
 import './TodoItem.scss'
 
 // Funtional Component
 // Props is 'object' chứa các thuộc tính của component
 
 export const TodoItemFunction = (props) => {
-  console.log(props)
+  const navigate = useNavigate();
+  
+  const goToEditForm = () => {
+    navigate(`${ROUTE.editForm}/${props.id}`);
+  }
+
   return (
-    <div className="todo-item">
+    <div className="todo-item" onClick={goToEditForm}>
       <p className="todo-item-title">Title: {props.title}</p>
       <p className="todo-item-creator">Creator: {props.creator}</p>
       <p className="todo-item-status">Status: {props.status}</p>

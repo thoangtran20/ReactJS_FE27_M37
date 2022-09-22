@@ -1,5 +1,9 @@
 import './TodoItemList.scss'
-import { TodoItemFunction } from '../../components/todo-item/TodoItem';
+import { TodoItemFunction } from '../../components/todo-item/TodoItem'
+import { useState } from 'react'
+import { useEffect } from 'react'
+import { localStorageUtil } from '../../utils'
+import { localStorageKey } from '../../const'
 
 export const Pagination = () => {}
 
@@ -79,10 +83,43 @@ export const Pagination = () => {}
 // ]
 
 const TodoItemList = (props) => {
-  const { data } = props;
+  const { get } = localStorageUtil(localStorageKey.todoItems, [])
+  const [todoListData, setTodoListData] = useState([])
+
+  // Callback o tham so thu nhat se chay khi state/props thay doi
+  useEffect(() => {
+
+  });
+
+  // Component Life Cycle: goat dong tuong tu componentDidMount
+  useEffect(() => {
+    const list = JSON.parse(get())
+    setTodoListData(list);
+
+    // componentWillUnmount: la ham tra ve trong 'componentWillUnmount'
+    return () => {
+      // Dung 1 subscription
+      // Dung theo doi 1 socket
+      // Dung setInterval
+      // Dung setTimeout
+    }
+  }, [])
+
+  // componentDidUpdate: Khi bat khi element nao trong arr dependency thay doi thu callback se duoc goi
+  // Thuong dung de bine doi du lieu dau vao
+
+  // useEffect(() => {
+  //   const newList = props.externalListData.map((item) => ({
+  //     ...item,
+  //     title: item.name,
+  //   }));
+
+  //   setTodoListData(newList);
+  // }, [props.externalListData, todoListData]);
+
   return (
     <div className="todo-item-list">
-      {data.map((item, index) => {
+      {todoListData.map((item, index) => {
         return (
           <TodoItemFunction
             key={index}
@@ -90,6 +127,7 @@ const TodoItemList = (props) => {
             creator={item.creator}
             status={item.status}
             description={item.description}
+            id={item.id}
           />
         )
       })}
@@ -98,3 +136,4 @@ const TodoItemList = (props) => {
 }
 
 export default TodoItemList
+

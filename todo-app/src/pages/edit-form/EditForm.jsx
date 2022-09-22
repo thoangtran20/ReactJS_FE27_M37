@@ -1,48 +1,49 @@
+import { useEffect } from 'react'
 import { useState } from 'react'
+import { useParams } from 'react-router'
 import { localStorageKey, TASK_STATUS } from '../../const'
 import { localStorageUtil } from '../../utils'
-import { v4 as uuidv4 } from 'uuid';
 import './style.scss'
 
-function AddNewForm(props) {
-  const { set, get } = localStorageUtil(localStorageKey.todoItems, []);
-  // const { handleFormSubmit } = props
+function EditForm() {
+  const { set, get } = localStorageUtil(localStorageKey.todoItems, [])
+  const { id } = useParams()
 
-  const [title, setTitle] = useState()
-  const [creator, setCreator] = useState()
-  const [status, setStatus] = useState()
-  const [description, setDescription] = useState()
+  const [todoItem, setTodoItem] = useState({
+    id: '',
+    title: '',
+    creator: '',
+    status: '',
+    description: '',
+  })
 
-  // console.log(creator)
-  // console.log(title)
-  // console.log(status)
-  // console.log(description)
+  useEffect(() => {
+    const list = JSON.parse(get())
+    const item = list.find((item) => item.id === id)
+    console.log(item)
+    setTodoItem(item)
+  }, [id])
 
   // e: Synthetic Event
   const handleSubmit = (e) => {
     e.preventDefault()
-    const newTask = {
-      title,
-      creator,
-      status,
-      description,
-      id: uuidv4(),
-    }
-    const oldList = JSON.parse(get());
-    set([newTask, ...oldList]);
   }
 
   return (
     <div className="container">
-      <h1>ADD NEW FORM</h1>
-      <form action="" className="form-container">
+      <h1>EDIT FORM</h1>
+      <form action="" className="EditForm">
         <div className="form-row">
           <label htmlFor="" className="form-label">
             Title
           </label>
           <input
+            value={todoItem.title}
             onChange={(e) => {
-              setTitle(e.target.value)
+              setTodoItem({
+                ...todoItem,
+                title: e.target.value,
+              })
             }}
             type="text"
             placeholder="Type title"
@@ -55,8 +56,12 @@ function AddNewForm(props) {
             Creator
           </label>
           <input
+            value={todoItem.creator}
             onChange={(e) => {
-              setCreator(e.target.value)
+              setTodoItem({
+                ...todoItem,
+                creator: e.target.value,
+              })
             }}
             type="text"
             placeholder="Name of creator"
@@ -64,27 +69,17 @@ function AddNewForm(props) {
             className="form-input"
           />
         </div>
-        {/* <div className="form-row">
-          <label htmlFor="" className="form-label">
-            Status
-          </label>
-          <input
-            onChange={(e) => {
-              setStatus(e.target.value)
-            }}
-            type="text"
-            placeholder="Status"
-            name="title"
-            className="form-input"
-          />
-        </div> */}
         <div className="form-row">
           <label htmlFor="" className="form-label">
             Description
           </label>
           <input
+            value={todoItem.description}
             onChange={(e) => {
-              setDescription(e.target.value)
+              setTodoItem({
+                ...todoItem,
+                description: e.target.value,
+              })
             }}
             type="text"
             placeholder="Description Details"
@@ -95,7 +90,10 @@ function AddNewForm(props) {
         <div
           className="form-row"
           onChange={(e) => {
-            setStatus(e.target.value)
+            setTodoItem({
+              ...todoItem,
+              status: e.target.value,
+            })
           }}
         >
           <label htmlFor="" className="form-label">
@@ -133,4 +131,4 @@ function AddNewForm(props) {
   )
 }
 
-export default AddNewForm
+export default EditForm

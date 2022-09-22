@@ -13,8 +13,9 @@ export const ROUTE = {
   new: '/new',
   done: '/done',
   addNew: '/add-new',
+  editForm: '/edit-form',
   details: '/detail',
-  notFounds: '+',
+  notFounds: '*',
 }
 
 export const SIDEBAR_ITEMS = [
