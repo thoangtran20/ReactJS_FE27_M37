@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { localStorageUtil } from '../../utils'
 import { localStorageKey } from '../../const'
+import { useSearchParams } from 'react-router-dom'
 
 export const Pagination = () => {}
 
@@ -85,6 +86,7 @@ export const Pagination = () => {}
 const TodoItemList = (props) => {
   const { get } = localStorageUtil(localStorageKey.todoItems, [])
   const [todoListData, setTodoListData] = useState([])
+  let [searchParamsGetter] = useSearchParams();
 
   // Callback o tham so thu nhat se chay khi state/props thay doi
   useEffect(() => {
@@ -119,6 +121,7 @@ const TodoItemList = (props) => {
 
   return (
     <div className="todo-item-list">
+      <div>Search: {searchParamsGetter.get("search")}</div>
       {todoListData.map((item, index) => {
         return (
           <TodoItemFunction

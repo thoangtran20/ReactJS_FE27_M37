@@ -1,14 +1,17 @@
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 import { localStorageKey, TASK_STATUS } from '../../const'
 import { localStorageUtil } from '../../utils'
 import './style.scss'
 
 function EditForm() {
   const { set, get } = localStorageUtil(localStorageKey.todoItems, [])
-  const { id } = useParams()
+  // lấy param từ url
+  const { id, status } = useParams()
+  const navigate = useNavigate()
 
+  /// state
   const [todoItem, setTodoItem] = useState({
     id: '',
     title: '',
@@ -17,16 +20,65 @@ function EditForm() {
     description: '',
   })
 
+  const [defaultValue, setDefaultValue] = useState({
+    id: '',
+    title: '',
+    creator: '',
+    status: '',
+    description: '',
+  })
+
+  // componentDidMount => 
   useEffect(() => {
+    // lấy list từ local storage
     const list = JSON.parse(get())
+    // tìm item cần chỉnh sửa
     const item = list.find((item) => item.id === id)
     console.log(item)
+    // lưu trữ giá trị vào state
     setTodoItem(item)
+    setDefaultValue(item);
   }, [id])
 
   // e: Synthetic Event
   const handleSubmit = (e) => {
     e.preventDefault()
+    console.log(todoItem)
+    const list = JSON.parse(get())
+    const newList = list.map((item) => {
+      if (item.id === todoItem.id) return todoItem
+      return item
+    })
+    set([...newList])
+    // Chuyển về trang trước đó
+    navigate(-1)
+  }
+
+  const handleDelete = (e) => {
+    e.preventDefault()
+    const list = JSON.parse(get())
+    // tìm vị trí
+    const index = list.findIndex((item) => item.id === todoItem.id)
+    console.log(index)
+    // xóa khỏi mảng
+    list.splice(index, 1)
+    // Set Local storage
+    set(list)
+    // Trở về trang truóc
+    navigate(-1)
+  }
+
+  const handleDeleteFilter = (e) => {
+    e.preventDefault();
+    const list = JSON.parse(get());
+    const newList = list.filter((item) => item.id !== todoItem.id);
+    set(newList);
+    navigate(-1);
+  }
+
+  const handleReset = (e) => {
+    e.preventDefault();
+    setTodoItem(defaultValue);
   }
 
   return (
@@ -100,6 +152,7 @@ function EditForm() {
             Status
           </label>
           <input
+            checked={todoItem.status === TASK_STATUS.new}
             type="radio"
             value={TASK_STATUS.new}
             name="status"
@@ -107,6 +160,7 @@ function EditForm() {
           />
           New
           <input
+            checked={todoItem.status === TASK_STATUS.doing}
             type="radio"
             value={TASK_STATUS.doing}
             name="status"
@@ -114,6 +168,7 @@ function EditForm() {
           />
           Doing
           <input
+            checked={todoItem.status === TASK_STATUS.done}
             type="radio"
             value={TASK_STATUS.done}
             name="status"
@@ -125,6 +180,12 @@ function EditForm() {
       <div>
         <button onClick={handleSubmit} className="btn-save">
           Save
+        </button>
+        <button onClick={handleDeleteFilter} className="btn-delete">
+          Delete
+        </button>
+        <button onClick={handleReset} className="btn-reset">
+          Reset
         </button>
       </div>
     </div>

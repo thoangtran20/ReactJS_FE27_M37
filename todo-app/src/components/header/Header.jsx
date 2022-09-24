@@ -1,11 +1,13 @@
 // import { FORM_PAGE } from '../../const'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { ROUTE } from '../../const';
-import { getNextPage } from '../../utils'
+// import { getNextPage } from '../../utils'
 import './Header.scss'
 function Header(props) {
   const navigate = useNavigate();
-  const { onOpenFormPage, page } = props
+  let [searchParams, setSearchParams] = useSearchParams();
+  console.log(searchParams.get('search'));
+  // const { onOpenFormPage, page } = props
 
   const onAddButtonClick = () => {
     navigate(ROUTE.addNew);
@@ -25,13 +27,14 @@ function Header(props) {
       <div>
         <input
           type="text"
+          onChange={(e) => setSearchParams({ search: e.target.value })}
           className="search-input"
           placeholder="Type something to search"
         />
         <button className="btn-search">Search</button>
       </div>
     </div>
-  )
+  );
 }
 
 export default Header

@@ -34,7 +34,7 @@ function App() {
           element={<MainLayout content={<AddNewForm />} />}
         />
         <Route
-          path={`${ROUTE.editForm}/:id`}
+          path={`${ROUTE.editForm}/:id/:status`}
           element={<MainLayout content={<EditForm />} />}
         />
       </Routes>
