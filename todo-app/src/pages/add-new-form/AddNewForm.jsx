@@ -1,22 +1,20 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { localStorageKey, TASK_STATUS } from '../../const'
 import { localStorageUtil } from '../../utils'
 import { v4 as uuidv4 } from 'uuid';
 import './style.scss'
+import { TodoListContext } from '../../context/TodoListContext';
+import { useNavigate } from 'react-router';
 
-function AddNewForm(props) {
+function AddNewForm() {
+  const navigate = useNavigate();
+  const { addItem } = useContext(TodoListContext)
   const { set, get } = localStorageUtil(localStorageKey.todoItems, []);
-  // const { handleFormSubmit } = props
 
   const [title, setTitle] = useState()
   const [creator, setCreator] = useState()
   const [status, setStatus] = useState()
   const [description, setDescription] = useState()
-
-  // console.log(creator)
-  // console.log(title)
-  // console.log(status)
-  // console.log(description)
 
   // e: Synthetic Event
   const handleSubmit = (e) => {
@@ -28,8 +26,8 @@ function AddNewForm(props) {
       description,
       id: uuidv4(),
     }
-    const oldList = JSON.parse(get());
-    set([newTask, ...oldList]);
+    addItem(newTask);
+    navigate(-1);
   }
 
   return (
@@ -64,20 +62,6 @@ function AddNewForm(props) {
             className="form-input"
           />
         </div>
-        {/* <div className="form-row">
-          <label htmlFor="" className="form-label">
-            Status
-          </label>
-          <input
-            onChange={(e) => {
-              setStatus(e.target.value)
-            }}
-            type="text"
-            placeholder="Status"
-            name="title"
-            className="form-input"
-          />
-        </div> */}
         <div className="form-row">
           <label htmlFor="" className="form-label">
             Description

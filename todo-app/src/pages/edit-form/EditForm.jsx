@@ -1,14 +1,16 @@
-import { useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { localStorageKey, TASK_STATUS } from '../../const'
+import { TodoListContext } from '../../context/TodoListContext'
 import { localStorageUtil } from '../../utils'
 import './style.scss'
 
 function EditForm() {
   const { set, get } = localStorageUtil(localStorageKey.todoItems, [])
+  const { updateItem, deleteItem } = useContext(TodoListContext)
   // lấy param từ url
-  const { id, status } = useParams()
+  const { id } = useParams()
   const navigate = useNavigate()
 
   /// state
@@ -43,38 +45,25 @@ function EditForm() {
   // e: Synthetic Event
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(todoItem)
-    const list = JSON.parse(get())
-    const newList = list.map((item) => {
-      if (item.id === todoItem.id) return todoItem
-      return item
-    })
-    set([...newList])
+    updateItem(todoItem)
     // Chuyển về trang trước đó
     navigate(-1)
   }
 
   const handleDelete = (e) => {
     e.preventDefault()
-    const list = JSON.parse(get())
-    // tìm vị trí
-    const index = list.findIndex((item) => item.id === todoItem.id)
-    console.log(index)
-    // xóa khỏi mảng
-    list.splice(index, 1)
-    // Set Local storage
-    set(list)
+    deleteItem(todoItem);
     // Trở về trang truóc
     navigate(-1)
   }
 
-  const handleDeleteFilter = (e) => {
-    e.preventDefault();
-    const list = JSON.parse(get());
-    const newList = list.filter((item) => item.id !== todoItem.id);
-    set(newList);
-    navigate(-1);
-  }
+  // const handleDeleteFilter = (e) => {
+  //   e.preventDefault();
+  //   const list = JSON.parse(get());
+  //   const newList = list.filter((item) => item.id !== todoItem.id);
+  //   set(newList);
+  //   navigate(-1);
+  // }
 
   const handleReset = (e) => {
     e.preventDefault();
@@ -181,7 +170,7 @@ function EditForm() {
         <button onClick={handleSubmit} className="btn-save">
           Save
         </button>
-        <button onClick={handleDeleteFilter} className="btn-delete">
+        <button onClick={handleDelete} className="btn-delete">
           Delete
         </button>
         <button onClick={handleReset} className="btn-reset">

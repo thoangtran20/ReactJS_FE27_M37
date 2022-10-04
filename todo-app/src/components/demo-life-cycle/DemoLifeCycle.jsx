@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-class DemoComp extends Component {
+export default class DemoComp extends Component {
   constructor(props) {
     this.state = {
       state: 'asdagad',
