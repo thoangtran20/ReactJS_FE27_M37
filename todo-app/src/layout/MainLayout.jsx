@@ -20,7 +20,7 @@ function MainLayout(props) {
         {content}
         {/* <MainContent page={currentPage} /> */}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }

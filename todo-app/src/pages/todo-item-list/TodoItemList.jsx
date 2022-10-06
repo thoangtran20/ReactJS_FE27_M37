@@ -1,33 +1,41 @@
 import './TodoItemList.scss'
 import { TodoItemFunction } from '../../components/todo-item/TodoItem'
-import { useContext } from 'react'
-import { TodoListContext } from '../../context/TodoListContext'
+import { usePagination, useTodoItemList } from './hook'
+import { ITEM_PER_PAGE } from '../../const'
+import Pagination from '../../components/pagination/Pagination'
 
 
-export const Pagination = () => {}
-
-const TodoItemList = () => {
-  const { data } = useContext(TodoListContext);
-  console.log(data);
-
+const TodoItemList = (props) => {
+  const { currentData } = useTodoItemList(props.status)
+  const { jumpPage, dataPerPage, currentPage, maxPage } = usePagination(
+    currentData,
+    ITEM_PER_PAGE,
+  )
 
   return (
-    <div className="todo-item-list">
-      {data.map((item, index) => {
-        return (
-          <TodoItemFunction
-            key={index}
-            title={item.title}
-            creator={item.creator}
-            status={item.status}
-            description={item.description}
-            id={item.id}
-          />
-        )
-      })}
+    <div>
+      <div className="todo-item-list">
+        {dataPerPage.map((item, index) => {
+          return (
+            <TodoItemFunction
+              key={index}
+              title={item.title}
+              creator={item.creator}
+              status={item.status}
+              description={item.description}
+              id={item.id}
+            />
+          )
+        })}
+      </div>
+
+      <Pagination
+        currentPage={currentPage}
+        jumpPage={jumpPage}
+        maxPage={maxPage}
+      />
     </div>
   )
 }
 
 export default TodoItemList
-

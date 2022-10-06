@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router'
 import './App.css'
-import { localStorageKey, ROUTE } from './const'
+import { localStorageKey, ROUTE, TASK_STATUS } from './const'
 import { TodoListContext } from './context/TodoListContext'
 import MainLayout from './layout/MainLayout'
 import AddNewForm from './pages/add-new-form/AddNewForm'
@@ -65,19 +65,25 @@ function App() {
         <Routes>
           <Route
             path={ROUTE.all}
-            element={<MainLayout content={<TodoItemList data={[]} />} />}
+            element={<MainLayout content={<TodoItemList />} />}
           />
           <Route
             path={ROUTE.new}
-            element={<MainLayout content={<TodoItemList data={[]} />} />}
+            element={
+              <MainLayout content={<TodoItemList status={TASK_STATUS.new} />} />
+            }
           />
           <Route
             path={ROUTE.doing}
-            element={<MainLayout content={<TodoItemList data={[]} />} />}
+            element={
+              <MainLayout content={<TodoItemList status={TASK_STATUS.doing} />} />
+            }
           />
           <Route
             path={ROUTE.done}
-            element={<MainLayout content={<TodoItemList data={[]} />} />}
+            element={
+              <MainLayout content={<TodoItemList status={TASK_STATUS.done} />} />
+            }
           />
           <Route
             path={ROUTE.addNew}

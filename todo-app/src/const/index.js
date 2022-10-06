@@ -40,3 +40,5 @@ export const SIDEBAR_ITEMS = [
 export const localStorageKey = {
   todoItems: 'TODO_ITEM_KEY',
 }
+
+export const ITEM_PER_PAGE = 4;
