@@ -1,13 +1,15 @@
 import { useContext, useEffect } from 'react'
 import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
-import { localStorageKey, TASK_STATUS } from '../../const'
+import { TASK_STATUS } from '../../const'
 import { TodoListContext } from '../../context/TodoListContext'
-import { localStorageUtil } from '../../utils'
+import { clientServer } from '../../server/clientServer'
 import './style.scss'
 
 function EditForm() {
-  const { set, get } = localStorageUtil(localStorageKey.todoItems, [])
+  const { data } = useContext(TodoListContext)
+
+  // const { set, get } = localStorageUtil(localStorageKey.todoItems, [])
   const { updateItem, deleteItem } = useContext(TodoListContext)
   // lấy param từ url
   const { id } = useParams()
@@ -30,16 +32,22 @@ function EditForm() {
     description: '',
   })
 
-  // componentDidMount => 
+  // componentDidMount =>
   useEffect(() => {
-    // lấy list từ local storage
-    const list = JSON.parse(get())
-    // tìm item cần chỉnh sửa
-    const item = list.find((item) => item.id === id)
-    console.log(item)
-    // lưu trữ giá trị vào state
-    setTodoItem(item)
-    setDefaultValue(item);
+    clientServer
+      .get(`todoItems/${id}`)
+      .then((res) => {
+        setTodoItem(res.data)
+        setDefaultValue(res.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    // const item = data.find((item) => item.id === id)
+    // console.log(item)
+    // // lưu trữ giá trị vào state
+    // setTodoItem(item)
+    // setDefaultValue(item);
   }, [id])
 
   // e: Synthetic Event
@@ -52,7 +60,7 @@ function EditForm() {
 
   const handleDelete = (e) => {
     e.preventDefault()
-    deleteItem(todoItem);
+    deleteItem(todoItem)
     // Trở về trang truóc
     navigate(-1)
   }
@@ -66,8 +74,8 @@ function EditForm() {
   // }
 
   const handleReset = (e) => {
-    e.preventDefault();
-    setTodoItem(defaultValue);
+    e.preventDefault()
+    setTodoItem(defaultValue)
   }
 
   return (

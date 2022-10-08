@@ -1,0 +1,67 @@
+{
+  "user": [
+    {
+      "id": "",
+      "username": "",
+      "password": ""
+    }
+  ],
+  "todoItems": [
+    {
+      "id": "ac3d0a97-927a-4e15-9582-2b1460a31275",
+      "title": "Đi bộ trên biển",
+      "creator": "Mẹ",
+      "description": "Đi bộ lúc 5h trên biển",
+      "status": "DOING"
+    },
+    {
+      "id": "69098cf9-4d23-47aa-a6cd-19e1ce4e249d",
+      "title": "Đi biển",
+      "creator": "Nam Nguyen",
+      "description": "Đi biển lúc 4h",
+      "status": "DOING"
+    },
+    {
+      "id": "84943dba-522c-4fb5-a716-a03041aa9479",
+      "title": "Ăn sáng",
+      "creator": "Mẹ",
+      "description": "Ăn sáng lúc 8h30",
+      "status": "DONE"
+    },
+    {
+      "id": "62613adb-7aac-4995-b4f9-780e55b83db7",
+      "title": "Ăn trưa",
+      "creator": "Mẹ",
+      "description": "Ăn trưa lúc 12h",
+      "status": "NEW"
+    },
+    {
+      "id": "8d17ec5a-cbe1-4d3d-99e2-fa3bd6fa340c",
+      "title": "Đi chơi",
+      "creator": "Tran Thoang",
+      "description": "Đi chơi lúc 8h",
+      "status": "DOING"
+    },
+    {
+      "id": "7703405b-59a4-46c2-94ff-a8262af12940",
+      "title": "Ngủ",
+      "creator": "Mẹ",
+      "description": "Ngủ lúc 11h",
+      "status": "DONE"
+    },
+    {
+      "title": "Nghỉ trưa",
+      "creator": "Thoang Tran",
+      "status": "NEW",
+      "description": "Nghỉ trưa lúc 13h",
+      "id": "10f2dd06-21c8-4c34-b452-e2c154971f01"
+    },
+    {
+      "title": "ádfasdf",
+      "creator": "dsfdsfadf",
+      "status": "NEW",
+      "description": "dfsasd",
+      "id": "47d12c30-951c-4d79-b281-f2daf5227526"
+    }
+  ]
+}

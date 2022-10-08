@@ -28,7 +28,7 @@ export const useTodoItemList = (status) => {
 }
 
 export const usePagination = (data, itemsPerPage) => {
-  const [dataPerPage, setDataPerPage] = useState([]);
+  // const [dataPerPage, setDataPerPage] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const maxPage = Math.ceil(data.length / itemsPerPage);
 
