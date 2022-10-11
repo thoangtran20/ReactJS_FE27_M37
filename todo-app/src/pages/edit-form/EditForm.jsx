@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react'
 import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
-import { TASK_STATUS } from '../../const'
+import { ROUTE, TASK_STATUS } from '../../const'
 import { TodoListContext } from '../../context/TodoListContext'
 import { clientServer } from '../../server/clientServer'
 import './style.scss'
@@ -55,14 +55,14 @@ function EditForm() {
     e.preventDefault()
     updateItem(todoItem)
     // Chuyển về trang trước đó
-    navigate(-1)
+    navigate(ROUTE.all)
   }
 
   const handleDelete = (e) => {
     e.preventDefault()
     deleteItem(todoItem)
     // Trở về trang truóc
-    navigate(-1)
+    navigate(ROUTE.all)
   }
 
   // const handleDeleteFilter = (e) => {

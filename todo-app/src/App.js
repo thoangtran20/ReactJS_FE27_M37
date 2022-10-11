@@ -9,11 +9,11 @@ import AddNewForm from './pages/add-new-form/AddNewForm'
 import EditForm from './pages/edit-form/EditForm'
 import TodoItemList from './pages/todo-item-list/TodoItemList'
 import { clientServer } from './server/clientServer'
-import { todoStore } from './mobx-store/TodoItemStore'
+// import { todoStore } from './mobx-store/TodoItemStore'
 // import StateDemo from './components/state-demo/StateDemo'
 // import MainLayout from './layout/MainLayout'
 
-function App({ todoListStore }) {
+const App = observer(({ store: todoListStore }) => {
   // const [todoList, setTodoList] = useState([])
   // const { get, set } = localStorageUtil(localStorageKey.todoItems, [])
 
@@ -21,36 +21,36 @@ function App({ todoListStore }) {
   console.log(todoListStore.getTodoItems())
 
   const setTodoList = (todoList) => {
-    todoStore.setTodoItems(todoList)
+    todoListStore.setTodoItems(todoList)
   }
 
-  const todoList = todoStore.getTodoItems()
+  const todoList = todoListStore.getTodoItems()
 
   useEffect(() => {
-    fetchTodoItem()
+    todoListStore.fetchTodoItem()
 
     // const listFromLocalStorage = JSON.parse(get())
     // console.log(listFromLocalStorage)
     // setTodoList(listFromLocalStorage)
   }, [])
 
-  const fetchTodoItem = () => {
-    clientServer
-      .get('todoItems')
-      .then((res) => {
-        setTodoList((res.data ?? []).reverse())
-      })
-      .catch((e) => {
-        console.log('error: ', e)
-      })
-  }
+  // const fetchTodoItem = () => {
+  //   clientServer
+  //     .get('todoItems')
+  //     .then((res) => {
+  //       setTodoList((res.data ?? []).reverse())
+  //     })
+  //     .catch((e) => {
+  //       console.log('error: ', e)
+  //     })
+  // }
 
   const handleAddItem = (newTask) => {
     clientServer
       .post('todoItems', newTask)
       .then((res) => {
         console.log(res)
-        fetchTodoItem()
+        todoListStore.fetchTodoItem()
       })
       .catch((err) => {
         console.log('error: ', err)
@@ -67,7 +67,7 @@ function App({ todoListStore }) {
       .patch(`todoItems/${updatedTask.id}`, updatedTask)
       .then((res) => {
         console.log(res)
-        fetchTodoItem()
+        todoListStore.fetchTodoItem()
       })
       .catch((err) => {
         console.log('error: ', err)
@@ -87,7 +87,8 @@ function App({ todoListStore }) {
       .delete(`todoItems/${deletedItem.id}`, deletedItem)
       .then((res) => {
         console.log(res)
-        fetchTodoItem()
+        todoListStore.fetchTodoItem()
+        ()
       })
       .catch((err) => {
         console.log('error: ', err)
@@ -157,6 +158,6 @@ function App({ todoListStore }) {
       </div>
     </TodoListContext.Provider>
   )
-}
+})
 
-export default observer(() => <App todoListStore={todoStore} />)
+export default App

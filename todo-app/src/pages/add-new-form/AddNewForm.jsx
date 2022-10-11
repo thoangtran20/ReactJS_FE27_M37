@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react'
-import { localStorageKey, TASK_STATUS } from '../../const'
+import { localStorageKey, ROUTE, TASK_STATUS } from '../../const'
 import { localStorageUtil } from '../../utils'
 import { v4 as uuidv4 } from 'uuid';
 import './style.scss'
@@ -27,7 +27,7 @@ function AddNewForm() {
       id: uuidv4(),
     }
     addItem(newTask);
-    navigate(-1);
+    navigate(ROUTE.all);
   }
 
   return (

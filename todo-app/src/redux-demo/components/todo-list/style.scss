@@ -1,0 +1,16 @@
+.TodoList {
+  width: 390px;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+
+    .item {
+      border: 1px solid green;
+      margin-bottom: 20px;
+      padding: 10px;
+      margin-right: 15px;
+      border-radius: 10px;
+    }
+  }
+}
