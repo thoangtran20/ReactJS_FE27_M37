@@ -43,11 +43,6 @@ function EditForm() {
       .catch((err) => {
         console.log(err)
       })
-    // const item = data.find((item) => item.id === id)
-    // console.log(item)
-    // // lưu trữ giá trị vào state
-    // setTodoItem(item)
-    // setDefaultValue(item);
   }, [id])
 
   // e: Synthetic Event

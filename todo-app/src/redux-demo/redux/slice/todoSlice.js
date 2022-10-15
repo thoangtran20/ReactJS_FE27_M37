@@ -6,7 +6,15 @@ const todoSlice = createSlice({
     data: [],
   },
   reducers: {
-    getTodoList: (state, action) => {},
+    setTodoList: (state, action) => {
+      console.log(action.type)
+      console.log(action.payload)
+      state.data = action.payload.reverse()
+    },
+    getTodoList: (state, action) => {
+      console.log(...state.data)
+      return [...state.data]
+    },
     addNewTodo: (state, action) => {
       console.log(action.type)
       console.log(action.payload)
@@ -20,12 +28,13 @@ const todoSlice = createSlice({
       const newList = [...state.data]
       newList.splice(action.payload, 1)
       console.log(action.payload)
-      state.data = (newList)
+      state.data = newList
     },
   },
 })
 
 export const {
+  setTodoList,
   getTodoList,
   addNewTodo,
   updateTodoItem,

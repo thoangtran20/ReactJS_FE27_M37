@@ -49,30 +49,3 @@ export class TodoItemClass extends Component {
     )
   }
 }
-
-// export default TodoItem;
-
-// class Person {
-//   // Thuoc tinh: ten, tuoi, ...
-//   constructor(name, age) {
-//     this.name = name;
-//     this.age = age;
-//   }
-
-//   run() {
-//     console.log(`${this.name} dang chay`)
-//   }
-
-//   sleep() {
-//     console.log(`${this.name} dang ngu`)
-//   }
-
-//   hello() {
-//     console.log(`${this.name} chao ban`);
-//   }
-
-// }
-// const thoang = new Person('Thoang', 22);
-// thoang.hello();
-// thoang.run();
-// thoang.sleep();

@@ -4,9 +4,8 @@ import { usePagination, useTodoItemList } from './hook'
 import { ITEM_PER_PAGE } from '../../const'
 import Pagination from '../../components/pagination/Pagination'
 
-
 const TodoItemList = (props) => {
-  const { currentData } = useTodoItemList(props.status)
+  let { currentData } = useTodoItemList(props.status)
   const { jumpPage, dataPerPage, currentPage, maxPage } = usePagination(
     currentData,
     ITEM_PER_PAGE,

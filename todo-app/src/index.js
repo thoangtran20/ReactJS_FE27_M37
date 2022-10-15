@@ -12,10 +12,14 @@ import { Provider } from 'react-redux'
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
-    {/* <BrowserRouter><App store={todoStore} /></BrowserRouter> */}
-    <Provider store={store}>
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
+    {/* <Provider store={store}>
       <MiniTodoApp />
-    </Provider>
+    </Provider> */}
   </React.StrictMode>,
 )
 

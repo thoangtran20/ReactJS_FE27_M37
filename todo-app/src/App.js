@@ -9,57 +9,59 @@ import AddNewForm from './pages/add-new-form/AddNewForm'
 import EditForm from './pages/edit-form/EditForm'
 import TodoItemList from './pages/todo-item-list/TodoItemList'
 import { clientServer } from './server/clientServer'
+import { useDispatch, useSelector } from 'react-redux'
+import { getTodoList, setTodoList } from './redux-demo/redux/slice/todoSlice'
 // import { todoStore } from './mobx-store/TodoItemStore'
-// import StateDemo from './components/state-demo/StateDemo'
-// import MainLayout from './layout/MainLayout'
 
-const App = observer(({ store: todoListStore }) => {
+const App = () => {
   // const [todoList, setTodoList] = useState([])
   // const { get, set } = localStorageUtil(localStorageKey.todoItems, [])
 
-  console.log(todoListStore.todoItemsCount)
-  console.log(todoListStore.getTodoItems())
+  const todoList = useSelector((state) => state.todoReducer.data)
+  console.log(todoList);
 
-  const setTodoList = (todoList) => {
-    todoListStore.setTodoItems(todoList)
-  }
+  const dispatch = useDispatch()
 
-  const todoList = todoListStore.getTodoItems()
+
+
+  // console.log(todoListStore.todoItemsCount)
+  // console.log(todoListStore.getTodoItems())
+
+  // const setTodoList = (todoList) => {
+  //   todoListStore.setTodoItems(todoList)
+  // }
+
+  // const todoList = todoListStore.getTodoItems()
+
+  // useEffect(() => {
+  //   todoListStore.fetchTodoItem()
+  // }, [])
 
   useEffect(() => {
-    todoListStore.fetchTodoItem()
-
-    // const listFromLocalStorage = JSON.parse(get())
-    // console.log(listFromLocalStorage)
-    // setTodoList(listFromLocalStorage)
+    fetchTodoItem()
   }, [])
 
-  // const fetchTodoItem = () => {
-  //   clientServer
-  //     .get('todoItems')
-  //     .then((res) => {
-  //       setTodoList((res.data ?? []).reverse())
-  //     })
-  //     .catch((e) => {
-  //       console.log('error: ', e)
-  //     })
-  // }
+  const fetchTodoItem = () => {
+    clientServer
+      .get('todoItems')
+      .then((res) => {
+        dispatch(setTodoList(res.data ?? []))
+      })
+      .catch((e) => {
+        console.log('error: ', e)
+      })
+  }
 
   const handleAddItem = (newTask) => {
     clientServer
       .post('todoItems', newTask)
       .then((res) => {
         console.log(res)
-        todoListStore.fetchTodoItem()
+        fetchTodoItem()
       })
       .catch((err) => {
         console.log('error: ', err)
       })
-
-    // const oldList = JSON.parse(get())
-    // const newList = [newTask, ...oldList]
-    // setTodoList(newList)
-    // set(newList)
   }
 
   const handleUpdateItem = (updatedTask) => {
@@ -67,19 +69,11 @@ const App = observer(({ store: todoListStore }) => {
       .patch(`todoItems/${updatedTask.id}`, updatedTask)
       .then((res) => {
         console.log(res)
-        todoListStore.fetchTodoItem()
+        fetchTodoItem()
       })
       .catch((err) => {
         console.log('error: ', err)
       })
-
-    // const list = JSON.parse(get())
-    // const newList = list.map((item) => {
-    //   if (item.id === todoItem.id) return todoItem
-    //   return item
-    // })
-    // setTodoList(newList)
-    // set([...newList])
   }
 
   const handleDeleteItem = (deletedItem) => {
@@ -87,22 +81,11 @@ const App = observer(({ store: todoListStore }) => {
       .delete(`todoItems/${deletedItem.id}`, deletedItem)
       .then((res) => {
         console.log(res)
-        todoListStore.fetchTodoItem()
-        ()
+        fetchTodoItem()()
       })
       .catch((err) => {
         console.log('error: ', err)
       })
-
-    // const list = JSON.parse(get())
-    // // tìm vị trí
-    // const index = list.findIndex((item) => item.id === todoItem.id)
-    // console.log(index)
-    // // xóa khỏi mảng
-    // list.splice(index, 1)
-    // // Set Local storage
-    // setTodoList(list)
-    // set(list)
   }
 
   console.log(todoList)
@@ -153,11 +136,9 @@ const App = observer(({ store: todoListStore }) => {
             element={<MainLayout content={<EditForm />} />}
           />
         </Routes>
-        {/* <MainLayout /> */}
-        {/* <StateDemo /> */}
       </div>
     </TodoListContext.Provider>
   )
-})
+}
 
 export default App
