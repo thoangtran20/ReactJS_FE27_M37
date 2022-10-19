@@ -1,14 +1,20 @@
 import { useContext, useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { TodoListContext } from '../../context/TodoListContext'
 
 // Custom Hook
 export const useTodoItemList = (status) => {
   // 'use' prefix
+  // const { data } = useContext(TodoListContext)
 
-  const { data } = useContext(TodoListContext)
-  const [currentData, setCurrentData] = useState([])
+  // Redux
+  const data = useSelector((state) => state.todoListReducer.data)
 
   console.log(data)
+
+  const [currentData, setCurrentData] = useState([])
+
+  // console.log(data)
 
   useEffect(() => {
     // Cho trường hợp all
@@ -29,20 +35,20 @@ export const useTodoItemList = (status) => {
 
 export const usePagination = (data, itemsPerPage) => {
   // const [dataPerPage, setDataPerPage] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const maxPage = Math.ceil(data.length / itemsPerPage);
+  const [currentPage, setCurrentPage] = useState(1)
+  const maxPage = Math.ceil(data.length / itemsPerPage)
 
   const jumpPage = (nextPage) => {
-    if(nextPage === currentPage) return;
+    if (nextPage === currentPage) return
 
-    setCurrentPage(nextPage);
+    setCurrentPage(nextPage)
   }
 
   const currentData = () => {
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const dataPerPage = data.slice(startIndex, endIndex);
-    return dataPerPage;
+    const startIndex = (currentPage - 1) * itemsPerPage
+    const endIndex = startIndex + itemsPerPage
+    const dataPerPage = data.slice(startIndex, endIndex)
+    return dataPerPage
   }
 
   return {

@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { observer } from 'mobx-react'
 import { Route, Routes } from 'react-router'
 import './App.css'
@@ -10,19 +10,31 @@ import EditForm from './pages/edit-form/EditForm'
 import TodoItemList from './pages/todo-item-list/TodoItemList'
 import { clientServer } from './server/clientServer'
 import { useDispatch, useSelector } from 'react-redux'
-import { getTodoList, setTodoList } from './redux-demo/redux/slice/todoSlice'
+// import {
+//   addNewTodo,
+//   getTodoList,
+//   setTodoList,
+// } from './redux-demo/redux/slice/todoSlice'
+import {
+  addTodoItemAsync,
+  deleteTodoItemAsync,
+  fetchTodoList,
+  setTodoList,
+  updateTodoItemAsync,
+} from './redux/slice/todoListSlice'
 // import { todoStore } from './mobx-store/TodoItemStore'
 
 const App = () => {
-  // const [todoList, setTodoList] = useState([])
+  // const [todoList] = useState([])
   // const { get, set } = localStorageUtil(localStorageKey.todoItems, [])
 
-  const todoList = useSelector((state) => state.todoReducer.data)
-  console.log(todoList);
+  const todoList = useSelector((state) => state.todoListReducer.data)
+  console.log(todoList)
 
+  // Tạo ra hàm dùng để đẩy action lên redux-store
   const dispatch = useDispatch()
 
-
+  // const setTodoList = dispatch(todoListSlice.setTodoList())
 
   // console.log(todoListStore.todoItemsCount)
   // console.log(todoListStore.getTodoItems())
@@ -37,55 +49,70 @@ const App = () => {
   //   todoListStore.fetchTodoItem()
   // }, [])
 
+  // componentDidMount:
   useEffect(() => {
-    fetchTodoItem()
+    dispatch(fetchTodoList())
+    // fetchTodoItem()
   }, [])
 
-  const fetchTodoItem = () => {
-    clientServer
-      .get('todoItems')
-      .then((res) => {
-        dispatch(setTodoList(res.data ?? []))
-      })
-      .catch((e) => {
-        console.log('error: ', e)
-      })
-  }
+  // const fetchTodoItem = () => {
+  //   clientServer
+  //     .get('todoItems')
+  //     .then((res) => {
+  //       dispatch(setTodoList(res.data ?? []))
+  //     })
+  //     .catch((e) => {
+  //       console.log('error: ', e)
+  //     })
+  // }
 
   const handleAddItem = (newTask) => {
-    clientServer
-      .post('todoItems', newTask)
-      .then((res) => {
-        console.log(res)
-        fetchTodoItem()
-      })
-      .catch((err) => {
-        console.log('error: ', err)
-      })
+    // clientServer
+    //   .post('todoItems', newTask)
+    //   .then((res) => {
+    //     console.log(res)
+    //     dispatch(fetchTodoList())
+    //   })
+    //   .catch((err) => {
+    //     console.log('error: ', err)
+    //   })
+    console.log(newTask)
+    const list = dispatch(addTodoItemAsync(newTask))
+    console.log(list)
+    dispatch(fetchTodoList(list))
+    // dispatch(setTodoList(newList))
   }
 
   const handleUpdateItem = (updatedTask) => {
-    clientServer
-      .patch(`todoItems/${updatedTask.id}`, updatedTask)
-      .then((res) => {
-        console.log(res)
-        fetchTodoItem()
-      })
-      .catch((err) => {
-        console.log('error: ', err)
-      })
+    // clientServer
+    //   .patch(`todoItems/${updatedTask.id}`, updatedTask)
+    //   .then((res) => {
+    //     console.log(res)
+    //     dispatch(fetchTodoList())
+    //   })
+    //   .catch((err) => {
+    //     console.log('error: ', err)
+    //   })
+    console.log(updatedTask)
+    const list = dispatch(updateTodoItemAsync(updatedTask))
+    console.log(list)
+    dispatch(fetchTodoList(list))
   }
 
   const handleDeleteItem = (deletedItem) => {
-    clientServer
-      .delete(`todoItems/${deletedItem.id}`, deletedItem)
-      .then((res) => {
-        console.log(res)
-        fetchTodoItem()()
-      })
-      .catch((err) => {
-        console.log('error: ', err)
-      })
+    // clientServer
+    //   .delete(`todoItems/${deletedItem.id}`, deletedItem)
+    //   .then((res) => {
+    //     console.log(res)
+    //     dispatch(fetchTodoList())
+    //   })
+    //   .catch((err) => {
+    //     console.log('error: ', err)
+    //   })
+    console.log(deletedItem)
+    const list = dispatch(deleteTodoItemAsync(deletedItem))
+    console.log(list)
+    dispatch(fetchTodoList(list))
   }
 
   console.log(todoList)

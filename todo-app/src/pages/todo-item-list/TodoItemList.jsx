@@ -3,8 +3,11 @@ import { TodoItemFunction } from '../../components/todo-item/TodoItem'
 import { usePagination, useTodoItemList } from './hook'
 import { ITEM_PER_PAGE } from '../../const'
 import Pagination from '../../components/pagination/Pagination'
+import { useSelector } from 'react-redux'
 
 const TodoItemList = (props) => {
+  const loading = useSelector((state) => state.todoListReducer.loading)
+
   let { currentData } = useTodoItemList(props.status)
   const { jumpPage, dataPerPage, currentPage, maxPage } = usePagination(
     currentData,
@@ -12,7 +15,8 @@ const TodoItemList = (props) => {
   )
 
   return (
-    <div>
+    <div className="todo-item-list-container">
+      {loading && <div>Loading Todo Item</div>}
       <div className="todo-item-list">
         {dataPerPage.map((item, index) => {
           return (

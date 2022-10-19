@@ -8,19 +8,20 @@ import { todoStore } from './mobx-store/TodoItemStore'
 import MiniTodoApp from './redux-demo/MiniTodoApp'
 import { store } from './redux-demo/redux/store/store'
 import { Provider } from 'react-redux'
+import { appStore } from './redux'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <BrowserRouter>
-      <Provider store={store}>
-        <App />
+      <Provider store={appStore}>
+        <App store={todoStore} />
       </Provider>
     </BrowserRouter>
-    {/* <Provider store={store}>
-      <MiniTodoApp />
-    </Provider> */}
-  </React.StrictMode>,
+    // {/* <Provider store={store}>
+    //   <MiniTodoApp />
+    // </Provider> */}
+  // </React.StrictMode>,
 )
 
 // If you want to start measuring performance in your app, pass a function
