@@ -14,6 +14,7 @@ export const addTodoItemAsync = createAsyncThunk(
   async (payload, thunkAPI) => {
     console.log(payload)
     const response = await clientServer.post('todoItems', payload)
+    thunkAPI.dispatch(fetchTodoList())
     return response.data
   },
 )
@@ -25,6 +26,7 @@ export const updateTodoItemAsync = createAsyncThunk(
       `todoItems/${payload.id}`,
       payload,
     )
+    thunkAPI.dispatch(fetchTodoList())
     return response.data
   },
 )
@@ -37,6 +39,7 @@ export const deleteTodoItemAsync = createAsyncThunk(
       `todoItems/${payload.id}`,
       payload,
     )
+    thunkAPI.dispatch(fetchTodoList())
     return response.data
   },
 )
@@ -81,14 +84,14 @@ export const todoListSlice = createSlice({
     builder.addCase(addTodoItemAsync.fulfilled, (state, action) => {
       state.loadingAddTodoItem = false
       // state.data = action.payload
-      fetchTodoList()
+      // fetchTodoList()
     })
 
     // "todoList/addTodoItemAsync/rejected" => action type
     builder.addCase(addTodoItemAsync.rejected, (state, action) => {
       state.loadingAddTodoItem = false
       state.data = action.error
-      fetchTodoList()
+      // fetchTodoList()
     })
 
     // "todoList/updateTodoItemAsync/pending" => action type
@@ -99,14 +102,14 @@ export const todoListSlice = createSlice({
     builder.addCase(updateTodoItemAsync.fulfilled, (state, action) => {
       state.loadingUpdateTodoItem = false
       // state.data = action.payload
-      fetchTodoList()
+      // fetchTodoList()
     })
 
     // "todoList/updateTodoItemAsync/rejected" => action type
     builder.addCase(updateTodoItemAsync.rejected, (state, action) => {
       state.loadingUpdateTodoItem = false
       state.data = action.error
-      fetchTodoList()
+      // fetchTodoList()
     })
 
     // "todoList/deleteTodoItemAsync/pending" => action type
@@ -117,7 +120,7 @@ export const todoListSlice = createSlice({
     builder.addCase(deleteTodoItemAsync.fulfilled, (state, action) => {
       state.loadingDeleteTodoItem = false
       // state.data = action.payload
-      fetchTodoList()
+      // fetchTodoList()
     })
 
     // "todoList/deleteTodoItemAsync/rejected" => action type

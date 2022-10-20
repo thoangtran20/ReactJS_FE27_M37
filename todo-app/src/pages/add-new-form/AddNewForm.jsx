@@ -1,15 +1,18 @@
 import { useContext, useState } from 'react'
 import { localStorageKey, ROUTE, TASK_STATUS } from '../../const'
 import { localStorageUtil } from '../../utils'
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid'
 import './style.scss'
-import { TodoListContext } from '../../context/TodoListContext';
-import { useNavigate } from 'react-router';
+import { TodoListContext } from '../../context/TodoListContext'
+import { useNavigate } from 'react-router'
+import { useDispatch } from 'react-redux'
+import { addTodoItemAsync } from '../../redux/slice/todoListSlice'
 
 function AddNewForm() {
-  const navigate = useNavigate();
-  const { addItem } = useContext(TodoListContext)
-  const { set, get } = localStorageUtil(localStorageKey.todoItems, []);
+  const navigate = useNavigate()
+  // const { addItem } = useContext(TodoListContext)
+  const dispatch = useDispatch()
+  const { set, get } = localStorageUtil(localStorageKey.todoItems, [])
 
   const [title, setTitle] = useState()
   const [creator, setCreator] = useState()
@@ -26,8 +29,9 @@ function AddNewForm() {
       description,
       id: uuidv4(),
     }
-    addItem(newTask);
-    navigate(ROUTE.all);
+    // addItem(newTask);
+    dispatch(addTodoItemAsync(newTask))
+    navigate(ROUTE.all)
   }
 
   return (

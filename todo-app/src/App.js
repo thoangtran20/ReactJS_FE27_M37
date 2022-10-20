@@ -22,6 +22,7 @@ import {
   setTodoList,
   updateTodoItemAsync,
 } from './redux/slice/todoListSlice'
+import { fetchTodoListAsync } from './redux/saga/todoSaga'
 // import { todoStore } from './mobx-store/TodoItemStore'
 
 const App = () => {
@@ -51,7 +52,7 @@ const App = () => {
 
   // componentDidMount:
   useEffect(() => {
-    dispatch(fetchTodoList())
+    dispatch(fetchTodoListAsync())
     // fetchTodoItem()
   }, [])
 
@@ -67,6 +68,7 @@ const App = () => {
   // }
 
   const handleAddItem = (newTask) => {
+    // Server
     // clientServer
     //   .post('todoItems', newTask)
     //   .then((res) => {
@@ -76,14 +78,16 @@ const App = () => {
     //   .catch((err) => {
     //     console.log('error: ', err)
     //   })
-    console.log(newTask)
-    const list = dispatch(addTodoItemAsync(newTask))
-    console.log(list)
-    dispatch(fetchTodoList(list))
+    // Redux
+    // console.log(newTask)
+    // const list = dispatch(addTodoItemAsync(newTask))
+    // console.log(list)
+    // dispatch(fetchTodoList(list))
     // dispatch(setTodoList(newList))
   }
 
   const handleUpdateItem = (updatedTask) => {
+    // Server
     // clientServer
     //   .patch(`todoItems/${updatedTask.id}`, updatedTask)
     //   .then((res) => {
@@ -93,13 +97,13 @@ const App = () => {
     //   .catch((err) => {
     //     console.log('error: ', err)
     //   })
-    console.log(updatedTask)
-    const list = dispatch(updateTodoItemAsync(updatedTask))
-    console.log(list)
-    dispatch(fetchTodoList(list))
+    // Redux
+    // console.log(updatedTask)
+    // dispatch(updateTodoItemAsync(updatedTask))
   }
 
   const handleDeleteItem = (deletedItem) => {
+    // Server
     // clientServer
     //   .delete(`todoItems/${deletedItem.id}`, deletedItem)
     //   .then((res) => {
@@ -109,10 +113,9 @@ const App = () => {
     //   .catch((err) => {
     //     console.log('error: ', err)
     //   })
-    console.log(deletedItem)
-    const list = dispatch(deleteTodoItemAsync(deletedItem))
-    console.log(list)
-    dispatch(fetchTodoList(list))
+    // Redux
+    // console.log(deletedItem)
+    // dispatch(deleteTodoItemAsync(deletedItem))
   }
 
   console.log(todoList)

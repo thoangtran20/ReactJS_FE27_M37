@@ -1,8 +1,13 @@
 import { useContext, useEffect } from 'react'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { useNavigate, useParams } from 'react-router'
 import { ROUTE, TASK_STATUS } from '../../const'
 import { TodoListContext } from '../../context/TodoListContext'
+import {
+  deleteTodoItemAsync,
+  updateTodoItemAsync,
+} from '../../redux/slice/todoListSlice'
 import { clientServer } from '../../server/clientServer'
 import './style.scss'
 
@@ -14,6 +19,8 @@ function EditForm() {
   // lấy param từ url
   const { id } = useParams()
   const navigate = useNavigate()
+
+  const dispatch = useDispatch()
 
   /// state
   const [todoItem, setTodoItem] = useState({
@@ -48,14 +55,16 @@ function EditForm() {
   // e: Synthetic Event
   const handleSubmit = (e) => {
     e.preventDefault()
-    updateItem(todoItem)
+    dispatch(updateTodoItemAsync(todoItem))
+    // updateItem(todoItem)
     // Chuyển về trang trước đó
     navigate(ROUTE.all)
   }
 
   const handleDelete = (e) => {
     e.preventDefault()
-    deleteItem(todoItem)
+    dispatch(deleteTodoItemAsync(todoItem))
+    // deleteItem(todoItem)
     // Trở về trang truóc
     navigate(ROUTE.all)
   }

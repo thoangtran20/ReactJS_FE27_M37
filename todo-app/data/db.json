@@ -50,52 +50,25 @@
       "status": "DOING"
     },
     {
-      "title": "Nghỉ trưa tại nhà ",
-      "creator": "Thoang Tran",
-      "status": "DOING",
+      "title": "Nghỉ trưa tại nhà riêng",
+      "creator": "Thoang Tran Duy",
+      "status": "DONE",
       "description": "Nghỉ trưa lúc 13h30 phút ",
       "id": "10f2dd06-21c8-4c34-b452-e2c154971f01"
     },
     {
-      "title": "Đi học react",
+      "title": "Đi học react js anh Phuc Tran",
       "creator": "Thoang Tran",
-      "status": "NEW",
-      "description": "Đi học react vào lúc 18h",
+      "status": "DOING",
+      "description": "Đi học react vào lúc 18h30",
       "id": "25e975a1-c0f8-4432-84fa-6cf6ad1db033"
     },
     {
-      "title": "Đi học javascript",
-      "creator": "Thoang Tran",
-      "status": "DONE",
-      "description": "Đi học Javascript vào lúc 18h",
-      "id": "e983748d-a07b-431b-b2d4-a8d1cb32c1fa"
-    },
-    {
-      "title": "Đi chơi biển",
+      "title": "Đi chơi biển PVĐ",
       "creator": "Thoang Tran ",
       "status": "NEW",
-      "description": "Đi biển lúc 17h",
+      "description": "Đi biển lúc 17h30",
       "id": "2dc7e3ab-e590-43e0-9090-2f6737dd9be0"
-    },
-    {
-      "title": "adsdsádfasdfdsasdadsf",
-      "creator": "ádadsdsasddâsdf",
-      "status": "NEW",
-      "description": "ádsdádádasdfasdfadasdf",
-      "id": "e682d01c-01ef-4b5a-badc-4c799cfd14bb"
-    },
-    {
-      "title": "ádfasdfádfasdfasdfasdf",
-      "creator": "adsasdfdfsasdfádfasdasdfasdf",
-      "status": "NEW",
-      "description": "dấddsaasdadsfádfsasd",
-      "id": "c2607a5a-3803-45d9-95b0-cb3888a06355"
-    },
-    {
-      "title": "ádasdf",
-      "creator": "sdfaasdf",
-      "description": "ádfádfasdasdf",
-      "id": "21a10c3d-1fa6-4a57-a61f-a74fffb78595"
     }
   ]
 }
