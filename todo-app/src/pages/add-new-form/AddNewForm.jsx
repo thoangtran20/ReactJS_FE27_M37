@@ -6,7 +6,8 @@ import './style.scss'
 import { TodoListContext } from '../../context/TodoListContext'
 import { useNavigate } from 'react-router'
 import { useDispatch } from 'react-redux'
-import { addTodoItemAsync } from '../../redux/slice/todoListSlice'
+import { addTodoItem, addTodoItemAsync } from '../../redux/saga/todoSaga'
+// import { addTodoItemAsync } from '../../redux/slice/todoListSlice'
 
 function AddNewForm() {
   const navigate = useNavigate()

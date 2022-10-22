@@ -1,8 +1,9 @@
 import { all, fork } from 'redux-saga/effects'
-import { todoSaga } from './todoSaga'
-import { userSaga } from './userSaga'
+import { watchTodoSaga } from './todoSaga'
+import { watchUserSaga } from './userSaga'
 
 export function* appSaga() {
-  yield all([fork(todoSaga), fork(userSaga)])
+  yield all([fork(watchTodoSaga), fork(watchUserSaga)])
 }
-  
+
+// non-blocking

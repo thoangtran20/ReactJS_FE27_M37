@@ -6,8 +6,12 @@ import { ROUTE, TASK_STATUS } from '../../const'
 import { TodoListContext } from '../../context/TodoListContext'
 import {
   deleteTodoItemAsync,
-  updateTodoItemAsync,
-} from '../../redux/slice/todoListSlice'
+  editTodoItemAsync,
+} from '../../redux/saga/todoSaga'
+// import {
+//   deleteTodoItemAsync,
+//   updateTodoItemAsync,
+// } from '../../redux/slice/todoListSlice'
 import { clientServer } from '../../server/clientServer'
 import './style.scss'
 
@@ -55,7 +59,7 @@ function EditForm() {
   // e: Synthetic Event
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(updateTodoItemAsync(todoItem))
+    dispatch(editTodoItemAsync(todoItem))
     // updateItem(todoItem)
     // Chuyển về trang trước đó
     navigate(ROUTE.all)

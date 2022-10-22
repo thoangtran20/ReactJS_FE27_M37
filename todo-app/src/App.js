@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { observer } from 'mobx-react'
+// import { observer } from 'mobx-react'
 import { Route, Routes } from 'react-router'
 import './App.css'
 import { ROUTE, TASK_STATUS } from './const'
@@ -15,13 +15,14 @@ import { useDispatch, useSelector } from 'react-redux'
 //   getTodoList,
 //   setTodoList,
 // } from './redux-demo/redux/slice/todoSlice'
-import {
-  addTodoItemAsync,
-  deleteTodoItemAsync,
-  fetchTodoList,
-  setTodoList,
-  updateTodoItemAsync,
-} from './redux/slice/todoListSlice'
+
+// import {
+//   addTodoItemAsync,
+//   deleteTodoItemAsync,
+//   fetchTodoList,
+//   setTodoList,
+//   updateTodoItemAsync,
+// } from './redux/slice/todoListSlice'
 import { fetchTodoListAsync } from './redux/saga/todoSaga'
 // import { todoStore } from './mobx-store/TodoItemStore'
 

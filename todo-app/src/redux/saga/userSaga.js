@@ -6,4 +6,4 @@ const loginError = createAction('user/loginError')
 
 function* loginWorker() {}
 
-export function* userSaga() {}
+export function* watchUserSaga() {}
